@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="header-patient">
+    <h2>Patient List</h2>
+    <button class="add-patient-button" (click)="redirectToInputDetails()">
+      Add New Patient
+    </button>
+  </div>
+  <table id="visitorTable" class="table">
+    <thead>
+      <tr>
+        <th>Patient Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>NPWP</th>
+        <th>PIC</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let visitor of visitors">
+        <td>{{ visitor.name }}</td>
+        <td>{{ visitor.address }}</td>
+        <td>{{ visitor.phone }}</td>
+        <td>{{ visitor.npwp }}</td>
+        <td>{{ visitor.pic }}</td>
+        <td>{{ visitor.customer_price_category }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

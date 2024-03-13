@@ -1,0 +1,102 @@
+<div class="visitor-form-container">
+  <h1>Patient Biodata</h1>
+  <form
+    class="visitor-form"
+    (ngSubmit)="onSubmit(visitorForm)"
+    #visitorForm="ngForm"
+  >
+    <div class="form-row">
+      <div class="form-group col">
+        <label for="name">Patient Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          [(ngModel)]="visitor.name"
+          required
+        />
+      </div>
+
+      <div class="form-group col">
+        <label for="address">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          name="address"
+          [(ngModel)]="visitor.address"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col">
+        <label for="npwp">NIK</label>
+        <input
+          type="text"
+          class="form-control"
+          id="npwp"
+          name="npwp"
+          [(ngModel)]="visitor.npwp"
+          required
+        />
+      </div>
+      <div class="form-group col">
+        <label for="phone">Phone</label>
+        <input
+          type="text"
+          class="form-control"
+          id="phone"
+          name="phone"
+          [(ngModel)]="visitor.phone"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col">
+        <label for="customer_price_category">Disease Category</label>
+        <select
+          class="form-control select-arrow"
+          id="customer_price_category"
+          style="width: 100%; height: 40px"
+          name="customer_price_category"
+          [(ngModel)]="visitor.customer_price_category"
+          required
+        >
+          <option
+            *ngFor="let category of diseaseCategoryOptions"
+            [value]="category"
+          >
+            {{ category }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group col">
+        <label for="pic">PIC</label>
+        <br />
+        <select
+          class="form-control select-arrow"
+          style="width: 100%; height: 40px"
+          id="pic"
+          name="pic"
+          [(ngModel)]="visitor.pic"
+          required
+        >
+          <option *ngFor="let pic of picOptions" [value]="pic">
+            {{ pic }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+    </div>
+  </form>
+  <div *ngIf="visitorForm.submitted" class="success-notification">
+    Form submitted successfully!
+  </div>
+</div>

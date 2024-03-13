@@ -1,0 +1,43 @@
+<div class="visitor-form-container">
+  <h2>Request Queue Number</h2>
+  <button (click)="requestQueueNumber()">Call Next Patient</button>
+</div>
+
+<div
+  class="visitor-form-container2"
+  *ngIf="nextPatient || visitors.length > 0; else noPatientAvailable"
+>
+  <div class="company-name">
+    <p class="queue-company">ALMEGATEX</p>
+  </div>
+
+  <hr />
+  <div class="company-name">
+    <span>Nomor antrian anda:</span>
+    <p class="queue-number">{{ queueNumber }}</p>
+  </div>
+
+  <!-- <div class="barcode-container">
+    <ngx-barcode class="barcode" [bc-value]="queueNumber"></ngx-barcode>
+  </div> -->
+
+  <div>
+    <p>{{ nextPatient?.name || visitors[0]?.name }}</p>
+  </div>
+
+  <div class="current-time">
+    <p>{{ currentTime }}</p>
+  </div>
+  <hr />
+
+  <div class="thank-you-message">
+    <p>Budayakan antri untuk kenyamanan bersama</p>
+    <p>Terima Kasih atas kunjungan anda</p>
+  </div>
+</div>
+
+<ng-template #noPatientAvailable>
+  <div class="visitor-form-container">
+    <p>No more patients available.</p>
+  </div>
+</ng-template>
