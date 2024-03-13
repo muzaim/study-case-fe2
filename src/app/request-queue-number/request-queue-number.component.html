@@ -1,6 +1,11 @@
+<link
+  href="https://fonts.googleapis.com/css?family=Libre Barcode 39"
+  rel="stylesheet"
+/>
+
 <div class="visitor-form-container">
   <h2>Request Queue Number</h2>
-  <button (click)="requestQueueNumber()">Call Next Patient</button>
+  <button (click)="requestQueueNumber()" class="button-call">Call Next Patient</button>
 </div>
 
 <div
@@ -21,6 +26,9 @@
     <ngx-barcode class="barcode" [bc-value]="queueNumber"></ngx-barcode>
   </div> -->
 
+  <div class="coba-barcode">
+    <span>{{ queueNumber }}</span>
+  </div>
   <div>
     <p>{{ nextPatient?.name || visitors[0]?.name }}</p>
   </div>
