@@ -1,23 +1,36 @@
 <div class="container">
   <div class="header-patient">
     <h2>Patient List</h2>
-    <button class="add-patient-button" (click)="redirectToInputDetails()">
-      Add New Patient
-    </button>
+    <div class="add-patient">
+      <div class="search-container">
+        <input
+          type="text"
+          placeholder="Search..."
+          [(ngModel)]="searchTerm"
+          (input)="search()"
+          class="search-input"
+        />
+      </div>
+      <button class="add-patient-button" (click)="redirectToInputDetails()">
+        Add New Patient
+      </button>
+    </div>
   </div>
   <table id="visitorTable" class="table">
     <thead>
       <tr>
+        <th>Queue</th>
         <th>Patient Name</th>
         <th>Address</th>
         <th>Phone</th>
-        <th>NPWP</th>
+        <th>NIK</th>
         <th>PIC</th>
         <th>Category</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let visitor of visitors">
+      <tr *ngFor="let visitor of filteredVisitors; let i = index">
+        <td>{{ "A" + (i + 1).toString().padStart(3, "0") }}</td>
         <td>{{ visitor.name }}</td>
         <td>{{ visitor.address }}</td>
         <td>{{ visitor.phone }}</td>
@@ -27,4 +40,5 @@
       </tr>
     </tbody>
   </table>
+  <button class="back-button" (click)="navigateToRoot()">Back</button>
 </div>

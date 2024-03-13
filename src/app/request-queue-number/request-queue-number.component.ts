@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Visitor } from './visitor.model';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-request-queue-number',
@@ -11,10 +12,10 @@ export class RequestQueueNumberComponent implements OnInit {
   visitors: Visitor[] = [];
   nextPatient: Visitor | undefined;
 
-  queueNumber: string = 'A0001';
+  queueNumber: string = 'A001';
   currentTime: string = '';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.getCurrentTime();
   }
 
@@ -26,7 +27,9 @@ export class RequestQueueNumberComponent implements OnInit {
   ngOnInit(): void {
     this.getVisitors();
   }
-
+  navigateToRoot() {
+    this.router.navigate(['/']);
+  }
   getVisitors(): void {
     this.http.get<any>('http://203.194.114.30:5000/api/v1/customer').subscribe(
       (response) => {
