@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Visitor } from './visitor.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { RequestQueueNUmberService } from './request-queue-number.service';
 @Component({
   selector: 'app-request-queue-number',
   templateUrl: './request-queue-number.component.html',
@@ -15,8 +15,16 @@ export class RequestQueueNumberComponent implements OnInit {
   queueNumber: string = 'A001';
   currentTime: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private RequestQueueNUmberService: RequestQueueNUmberService
+  ) {
     this.getCurrentTime();
+  }
+
+  generatePDF(): void {
+    this.RequestQueueNUmberService.generatePDF();
   }
 
   getCurrentTime() {
@@ -59,6 +67,7 @@ export class RequestQueueNumberComponent implements OnInit {
       console.log('Calling next patient:', this.nextPatient?.name);
       this.visitors.shift();
       this.updateNextPatient();
+      this.generatePDF();
     } else {
       console.log('No patients in the queue.');
       this.nextPatient = undefined;
