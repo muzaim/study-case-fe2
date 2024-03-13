@@ -13,7 +13,7 @@ export class VisitorService {
 
   addCustomer(customerData: any) {
     return this.http.post(
-      'http://localhost:5000/api/v1/customer',
+      'http://203.194.114.30:5000/api/v1/customer',
       customerData
     );
   }

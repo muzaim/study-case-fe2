@@ -10,8 +10,8 @@ export class VisitorListService {
   constructor(private http: HttpClient) {}
 
   getVisitors() {
-    return this.http.get('http://localhost:5000/api/v1/customer').pipe(
-      map((response: any) => response.OUT_DATA) 
+    return this.http.get('http://203.194.114.30:5000/api/v1/customer').pipe(
+      map((response: any) => response.OUT_DATA)
     );
   }
 }
