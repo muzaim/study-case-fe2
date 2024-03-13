@@ -28,7 +28,7 @@ export class RequestQueueNumberComponent implements OnInit {
   }
 
   getVisitors(): void {
-    this.http.get<any>('http://localhost:5000/api/v1/customer').subscribe(
+    this.http.get<any>('http://203.194.114.30:5000/api/v1/customer').subscribe(
       (response) => {
         if (response.OUT_DATA && response.OUT_DATA.length > 0) {
           this.visitors = response.OUT_DATA.map((visitor: any, index: any) => ({
